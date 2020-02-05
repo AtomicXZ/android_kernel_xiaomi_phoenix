@@ -502,6 +502,24 @@ static int smb5_parse_dt(struct smb5 *chip)
 	chg->lpd_disabled = chg->lpd_disabled ||
 			of_property_read_bool(node, "qcom,lpd-disable");
 
+	chg->qc_class_ab = of_property_read_bool(node,
+				"qcom,distinguish-qc-class-ab");
+
+	chg->six_pin_step_charge_enable = of_property_read_bool(node,
+				"mi,six-pin-step-chg");
+
+	chg->dynamic_fv_enabled = of_property_read_bool(node,
+				"qcom,dynamic-fv-enable");
+
+	chg->reg_dump_enable = of_property_read_bool(node,
+				"qcom,reg-dump-enable");
+
+	chg->temp_27W_enable = of_property_read_bool(node,
+				"qcom,temp-27W-enable");
+
+	chg->support_ffc = of_property_read_bool(node,
+				"mi,support-ffc");
+
 	rc = of_property_read_u32(node, "qcom,wd-bark-time-secs",
 					&chip->dt.wd_bark_time);
 	if (rc < 0 || chip->dt.wd_bark_time < MIN_WD_BARK_TIME)
