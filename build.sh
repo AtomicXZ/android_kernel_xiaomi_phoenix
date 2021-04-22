@@ -8,7 +8,8 @@ git clone --depth=1 https://github.com/kdrag0n/proton-clang clang
 
 echo "Done"
 
-IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
+IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz
+DTBO=$(pwd)/out/arch/arm64/boot/dtbo.img
 TANGGAL=$(date +"%F_%H-%M")
 START=$(date +"%s")
 CLANG_VERSION=$(clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
@@ -62,9 +63,9 @@ function compile() {
                       OBJDUMP=llvm-objdump \
                       STRIP=llvm-strip 2>&1 | tee build.log
 
-if [ `ls "$IMAGE" 2>/dev/null | wc -l` != "0" ]
+if [[ -f ${IMAGE} &&  ${DTBO} ]]
 then
-   cp out/arch/arm64/boot/Image.gz-dtb AnyKernel
+   mv -f $IMAGE ${DTBO} AnyKernel
 else
    finerr
 fi
