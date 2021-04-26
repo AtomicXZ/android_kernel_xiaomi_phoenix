@@ -8,7 +8,7 @@ git clone --depth=1 https://github.com/kdrag0n/proton-clang clang
 
 echo "Done"
 
-IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz
+IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 DTBO=$(pwd)/out/arch/arm64/boot/dtbo.img
 TANGGAL=$(date +"%F_%H-%M")
 START=$(date +"%s")
