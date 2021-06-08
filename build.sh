@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Download clang and kernel source
-git clone --depth=1 https://github.com/AtomicXZ/android_kernel_xiaomi_phoenix.git -b rn kernel
+git clone --depth=1 https://github.com/AtomicXZ/android_kernel_xiaomi_phoenix.git -b rn-backup kernel
 cd kernel
 git clone --depth=1 https://github.com/kdrag0n/proton-clang clang
 
