@@ -5,8 +5,9 @@ git clone --depth=1 https://github.com/AtomicXZ/android_kernel_xiaomi_phoenix.gi
 cd kernel
 git clone --depth=1 https://github.com/kdrag0n/proton-clang clang
 
-IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
+IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz
 DTBO=$(pwd)/out/arch/arm64/boot/dtbo.img
+DTB=$(pwd)/out/arch/arm64/boot/dts/qcom/sdmmagpie.dtb
 TANGGAL=$(date +"%d-%m_%H-%M")
 START=$(date +"%s")
 CLANG_VERSION=$(clang/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')
@@ -60,9 +61,9 @@ function compile() {
                       OBJDUMP=llvm-objdump \
                       STRIP=llvm-strip 2>&1 | tee build.log
 
-if [[ -f ${IMAGE} &&  ${DTBO} ]]
+if [[ -f ${IMAGE} && ${DTBO} ]]
 then
-   mv -f $IMAGE ${DTBO} AnyKernel
+   mv -f $IMAGE ${DTBO} ${DTB} AnyKernel
 else
    finerr
 fi
