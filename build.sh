@@ -4,6 +4,7 @@
 git clone --depth=1 https://github.com/AtomicXZ/android_kernel_xiaomi_phoenix.git -b phoenix-r-oss kernel
 cd kernel
 git clone --depth=1 https://github.com/kdrag0n/proton-clang clang
+git clone https://github.com/AtomicXZ/AnyKernel3 AnyKernel
 
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz
 DTBO=$(pwd)/out/arch/arm64/boot/dtbo.img
